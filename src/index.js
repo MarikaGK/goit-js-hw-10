@@ -61,8 +61,8 @@ function renderCountryDiv(country) {
   const countryDivDescription = document.querySelectorAll('div > p');
 
   countryDivHeader.style.display = 'flex';
-  countryDivHeader.style.gap = '20px';
   countryDivHeader.style.alignItems = 'center';
+  countryDivHeader.style.gap = '20px';
   countryDivHeader.style.fontSize = '30px';
   countryDivDescription.forEach(el => {
     el.style.fontSize = '20px';
