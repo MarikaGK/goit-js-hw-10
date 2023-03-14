@@ -7,12 +7,12 @@ import { fetchCountries } from './js/fetchCountries';
 const DEBOUNCE_DELAY = 300;
 
 const fetchCountryInput = document.querySelector('input#search-box');
-const countryList = document.querySelector('.country-list');
 const countryInfoDiv = document.querySelector('.country-info');
-
-countryList.style.listStyleType = 'none';
+const countryList = document.querySelector('.country-list');
 
 const resetMarkup = el => (el.innerHTML = '');
+
+countryList.style.listStyleType = 'none';
 
 fetchCountryInput.addEventListener(
   'input',
