@@ -49,21 +49,35 @@ function refactorFetchCountries(response) {
 
 function renderCountryDiv(country) {
   resetMarkup(countryList);
-  const markup = `<h2><img width="96" height="63" src='${
+  const markup = `<h2 class="header"><img width="96" height="63" src='${
     country[0].flags.svg
   }' alt="${country[0].name.official} flag" />${country[0].name.official}</h2>
-    <p><b>Capital: </b>${country[0].capital}</p>
-    <p><b>Population: </b>${country[0].population}</p>
-    <p><b>Languages: </b>${Object.values(country[0].languages)}</p>`;
+  <ul>
+    <li class="list_item"><p class="list_item--text"><b>Capital: </b>${
+      country[0].capital
+    }</p></li>
+    <li class="list_item"><p class="list_item--text"><b>Population: </b>${
+      country[0].population
+    }</p></li>
+    <li class="list_item"><p class="list_item--text"><b>Languages: </b>${Object.values(
+      country[0].languages
+    )}</p></li>
+    </ul>`;
   countryInfoDiv.innerHTML = markup;
 
-  const countryDivHeader = document.querySelector('h2');
-  const countryDivDescription = document.querySelectorAll('div > p');
+  const countryDivHeader = document.querySelector('.header');
+  const countryDivDescription = document.querySelectorAll('.list_item--text');
+  const countryDivDescriptionList = document.querySelectorAll('.list_item');
 
   countryDivHeader.style.display = 'flex';
   countryDivHeader.style.alignItems = 'center';
   countryDivHeader.style.gap = '20px';
   countryDivHeader.style.fontSize = '30px';
+  countryDivDescriptionList.forEach(el => {
+    el.style.display = 'flex';
+    el.style.gap = '20px';
+    el.style.alignItems = 'center';
+  });
   countryDivDescription.forEach(el => {
     el.style.fontSize = '20px';
   });
@@ -73,15 +87,15 @@ function renderCountryList(countries) {
   resetMarkup(countryInfoDiv);
   const markup = countries
     .map(country => {
-      return `<li>
-        <img src='${country.flags.svg}' alt="${country.name.official} flag" width="64" height="42"/><p>${country.name.official}</p>
+      return `<li class="list_item">
+        <img src='${country.flags.svg}' alt="${country.name.official} flag" width="64" height="42"/><p class="list_item--text">${country.name.official}</p>
             </li>`;
     })
     .join('');
   countryList.innerHTML = markup;
 
-  const countryListItem = document.querySelectorAll('li');
-  const countryListCountryName = document.querySelectorAll('li > p');
+  const countryListItem = document.querySelectorAll('.list_item');
+  const countryListCountryName = document.querySelectorAll('.list_item--text');
 
   countryListItem.forEach(el => {
     el.style.display = 'flex';
